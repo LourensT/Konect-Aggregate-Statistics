@@ -158,11 +158,11 @@ class TableParser(HTMLParser):
         pd.DataFrame.from_dict(self.all_networks, orient="index").to_csv(fp)
 
 
-attributes_of_interest = []
-url = 'http://konect.cc/networks/'
-r = requests.get(url).text
+if __name__ == "__main__":
+    url = 'http://konect.cc/networks/'
+    r = requests.get(url).text
 
-tableParser = TableParser(verbose=False)
-tableParser.getScaffoldTable(r, 1326)
-tableParser.scrapeStatistics()
-tableParser.saveAsCSV('dataset.csv')
+    tableParser = TableParser(verbose=False)
+    tableParser.getScaffoldTable(r, 1326)
+    tableParser.scrapeStatistics()
+    tableParser.saveAsCSV('dataset.csv')
