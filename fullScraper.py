@@ -7,15 +7,18 @@ import numpy as np
 
 from html.parser import HTMLParser
 
+import unicodedata
+
 class TableParser(HTMLParser):
 
     ran = False
+    BASE_URL = "http://konect.cc/networks/"
 
-    def __init__(self, html, table_length, verbose = False):
-        # super call
+    def __init__(self,  verbose = False):
         HTMLParser.__init__(self)
         self.verbose = verbose
 
+    def getScaffoldTable(self, html, table_length):
         # initalize table
         self.table = [[0] * 3 for i in range(table_length + 1)]
         self.table[0][0] = "Code"
@@ -29,6 +32,39 @@ class TableParser(HTMLParser):
         #start
         self.feed(html)
         self.ran = True
+
+        self.all_networks = {}
+        # set as df
+        for network in self.table[1:]:
+            self.all_networks[network[0]] = {"Name" : network[1], "URL" : network[2]}
+
+
+    '''
+    Scrapes both the given statistics and the attributes for all the networks. 
+
+    @param: statistics: optionally provide a list of the statistics you want to scrape
+    @param: first: optionally make the scraping stop after a given number of networks. For debugging mostly.
+    '''
+    def scrapeStatistics(self, statistics=None, first=None):
+
+        count = 0
+
+        for code, info in self.all_networks.items():
+
+            if not first or count < first:
+                print('Processing network: ', code)
+
+                url = self.BASE_URL + info['URL']
+                dfs =  pd.read_html(url)
+                df_description = dfs[0]
+                df_stats = dfs[1]
+
+                info['Attributes'] = self.getAttributesOfNetwork(df_description)
+                # union dictionaries
+                stats = self.getStatisticsOfNetwork(df_stats, statistics=statistics)
+                self.all_networks[code] = {**info, **stats}
+
+                count += 1
 
     def handle_starttag(self, tag, attrs):
         # only read data if we're in the table
@@ -66,16 +102,67 @@ class TableParser(HTMLParser):
             if self.verbose:
                 print("Not adding data:", data)
 
-    def getTableAsDataFrame(self):
-        df = pd.DataFrame.from_records(self.table)
-        header = df.iloc[0]
-        df = df[1:]
-        df.columns = header
-        return df
+    def getAttributesOfNetwork(self, df):
+        attributes = []
+
+        fields = df[df[0].isin(['Network format', 'Edge type'])][2]
+        for field in fields:
+            for attr in field.split(", "):
+                attributes.append(attr)
+        
+        return attributes
+
+    '''
+    If statistics is left to be None all statistics are processed
+    '''
+    def getStatisticsOfNetwork(self, df, statistics=None):
+        
+        '''
+        Helps with processing the numerical values
+        '''
+        def convert_to_float(x):
+            x_new = unicodedata.normalize("NFKD", x)
+            x_new = x_new.replace(' ', '')
+            x_new = x_new.replace('−', '-') 
+
+            # handle scientific notation
+            if '10-' in x_new: 
+                decimals = float(x_new.split('10-')[0][:-1])
+                factor =  int(x_new.split('10-')[1])
+                converted = decimals * 10**(-1*factor)
+                return converted
+            else:
+                converted = float(x_new)
+                return converted
+
+        networkStatistics = {}
+
+        for row in df.iterrows():
+            if not statistics or row[1][0] in statistics:
+                try:
+                    statistic_numeric = int(row[1][2])
+                except ValueError:
+                    try:
+                        statistic_numeric = convert_to_float(row[1][2])
+                    except ValueError:
+                        print("ValueError while numerically parsing {} for statistic{} , proceeding to save as string".format(row[1][2], row[1][0]))
+                        statistic_numeric = row[1][2]
+
+                assert (row[1][0] not in networkStatistics), "Statistic{} (with value {}) is a duplicate!".format(row[1][2], row[1][0])
+
+                networkStatistics[row[1][0]] = statistic_numeric
+
+        return networkStatistics
+
+    def saveAsCSV(self, fp):
+        pd.DataFrame.from_dict(self.all_networks, orient="index").to_csv(fp)
+
 
 attributes_of_interest = []
 url = 'http://konect.cc/networks/'
 r = requests.get(url).text
 
-tableParser = TableParser(r, 1326)
-df = tableParser.getTableAsDataFrame().to_csv("try.csv")
+tableParser = TableParser(verbose=False)
+tableParser.getScaffoldTable(r, 1326)
+tableParser.scrapeStatistics()
+tableParser.saveAsCSV('dataset.csv')
