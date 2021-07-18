@@ -7,4 +7,5 @@ Webscraped data on the networks over on the KONECT project. Features so far incl
 * n (# of nodes, [source](http://konect.cc/statistics/size/))
 * n1 (# of left nodes for bipartite networks, [source](http://konect.cc/statistics/size/) )
 * n2 (# of right nodes for bipartite networks, [source](http://konect.cc/statistics/size/) )
-* diameter (the maximal distance between any two nodes, where the distance between two nodes is defined as the number of edges in the shortest path from one node to another, [source](http://konect.cc/statistics/diam/))
+* δ diameter (the maximal distance between any two nodes, where the distance between two nodes is defined as the number of edges in the shortest path from one node to another, [source](http://konect.cc/statistics/diam/))
+* c Cluster Coefficient (the probability that a random chosen wedge (i.e., 2-star) is completed by a third edge to form a triangle. Multiple edges, edge directions and loops are not taken into account, [source](http://konect.cc/statistics/clusco/) )
