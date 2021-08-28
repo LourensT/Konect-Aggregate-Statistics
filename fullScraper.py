@@ -59,7 +59,10 @@ class TableParser(HTMLParser):
                 df_description = dfs[0]
                 df_stats = dfs[1]
 
+                info['Category'] = self.getCategoryOfNetwork(df_description)
+
                 info['Attributes'] = self.getAttributesOfNetwork(df_description)
+
                 # union dictionaries
                 stats = self.getStatisticsOfNetwork(df_stats, statistics=statistics)
                 self.all_networks[code] = {**info, **stats}
@@ -111,6 +114,10 @@ class TableParser(HTMLParser):
                 attributes.append(attr)
         
         return attributes
+
+    def getCategoryOfNetwork(self, df):
+        category = df[df[0] == "Category" ].iloc[0, 2]
+        return category
 
     '''
     If statistics is left to be None all statistics are processed
