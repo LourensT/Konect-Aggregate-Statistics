@@ -1,2 +1,5 @@
 legacy/
 Plots/texput.log
+Plots/main.aux
+Plots/main.log
+Plots/main.synctex.gz
