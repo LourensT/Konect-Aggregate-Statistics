@@ -1,0 +1,77 @@
+\documentclass[fleqn]{article}
+\pagenumbering{arabic}
+
+%\usepackage{showkeys}
+\usepackage{url}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{fullpage}
+%\usepackage{html}
+\usepackage[T1]{fontenc}
+\usepackage [latin2]{inputenc}
+\usepackage {times}
+\usepackage{dsfont}
+%\usepackage[english]{babel}
+\usepackage {amsmath}
+\usepackage {amsthm}
+\usepackage {amssymb}
+\usepackage{calc}
+\usepackage {bm}
+
+
+\usepackage{tikz}
+\usepackage[percent]{overpic}
+
+% for tikz matlab plots
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+
+% ./Figures added to the environmental variable TEXINPUT
+% import image path under current directory
+
+% import path of images not under the current directory
+%\usepackage{import}
+%\import{<path>/<to>/<file>}{<filename>.tex}
+%\graphicspath{
+%			{./webnode/},
+%		 	}
+
+\newenvironment{source}
+{\begin{list}{}{\setlength{\leftmargin}{1em}}\item\scriptsize\bfseries}
+	{\end{list}}
+
+\newenvironment{tinysource}
+{\begin{list}{}{\setlength{\leftmargin}{1em}}\item\tiny\bfseries}
+	{\end{list}}
+
+
+\title{Konect Aggregate Statistics}
+\author{Lourens Touwen}
+
+
+\begin{document}
+	
+	\pagestyle{plain}
+	
+	\maketitle
+	
+	\newlength\fheight 
+	\newlength\fwidth 
+	\setlength\fheight{0.44\textwidth} 
+	\setlength\fwidth{0.65\textwidth}
+	
+	\definecolor{mycolor1}{rgb}{0.00000,0.80000,0.80000}
+	\definecolor{mycolor2}{rgb}{0.00000,0.50000,0.50000}
+	\definecolor{mycolor3}{rgb}{0.00000,0.30000,0.30000}
+	\definecolor{mycolor4}{rgb}{0.00000,0.10000,0.10000}
+	\definecolor{mycolor5}{rgb}{0.00000,1,1}
+	
+	\begin{figure}[!htb]
+		\centering
+		\input{set.tikz}
+		\caption{set}
+	\end{figure}
+	
+\end{document}

@@ -1,0 +1,3 @@
+[submodule "TikzPlotsFromPython"]
+	path = TikzPlotsFromPython
+	url = https://github.com/LourensT/TikzPlotsFromPython.git
