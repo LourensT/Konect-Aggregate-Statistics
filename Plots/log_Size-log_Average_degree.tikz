@@ -14,16 +14,16 @@ axis y line*=left,
 x tick label style = {/pgf/number format/.cd, scaled x ticks = false, set thousands separator={}, fixed},
 axis background/.style={fill=white},
 legend style={legend pos=north west, legend cell align=left, align=left, draw=white!15!black}, 
-xmin=0, 
+xmin=10, 
 xmax=105153952, 
-ymin=0, 
+ymin=0.282541, 
 ymax=22633.4, 
 xmode=log, 
 ymode=log, 
 xlabel={Size}, 
 ylabel={Average degree}]
 
-\addplot [color=mycolor1, line width = 2pt, mark size=2pt, mark=diamond*, only marks, mark options={solid, mycolor1}]
+\addplot [color=mycolor2, line width = 2pt, mark size=1.5pt, mark=*, only marks, mark options={solid, mycolor2}]
 table[row sep=crcr]{
 14274	2.88258\\ 
 10	2.8\\ 

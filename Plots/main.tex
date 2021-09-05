@@ -68,51 +68,85 @@
 	\definecolor{mycolor4}{rgb}{0.00000,0.10000,0.10000}
 	\definecolor{mycolor5}{rgb}{0.00000,1,1}
 	
+	All networks in KONECT, except Infrastructure Networks. If filtered on size, then N>10000.
+	
 	\begin{figure}[!htb]
 		\centering
 		\input{Size-Diameter.tikz}
-		\caption{Size-Diameter.tikz}
+		\caption{Size-Diameter.tikz, size > 10000, total number of networks 727}
 	\end{figure}
 
 	\begin{figure}[!htb]
 		\centering
 		\input{log_Size-Diameter.tikz}
-		\caption{log\_Size-Diameter.tikz}
+		\caption{log\_Size-Diameter.tikz, size > 10000, total number of networks 727}
 	\end{figure}
 
 	\begin{figure}[!htb]
 		\centering
 		\input{Size-Clustering_coefficient.tikz}
-		\caption{Size-Clustering\_coefficient.tikz}
+		\caption{Size-Clustering\_coefficient.tikz, size > 10000, total number of networks 727}
+	\end{figure}
+
+	\begin{figure}[!htb]
+		\centering
+		\input{log_Size-Clustering_coefficient.tikz}
+		\caption{log\_Size-Clustering\_coefficient.tikz, size > 10000, total number of networks 727}
 	\end{figure}
 	
 	\begin{figure}[!htb]
 		\centering
 		\input{log_Size-log_Maximum_indegree.tikz}
-		\caption{log\_Size-log\_Maximum\_indegree.tikz}
+		\caption{log\_Size-log\_Maximum\_indegree.tikz, with size > 10000, total number of networks 727}
 	\end{figure}	
 
 	\begin{figure}[!htb]
 		\centering
 		\input{log_Size-log_Maximum_degree.tikz}
-		\caption{log\_Size-log\_Maximum\_degree.tikz}
+		\caption{log\_Size-log\_Maximum\_degree.tikz, with size > 10000, total number of networks 727}
 	\end{figure}
 	
 	\begin{figure}[!htb]
 		\centering
 		\input{log_Size-log_Average_degree.tikz}
-		\caption{log\_Size-log\_Average\_degree.tikz}
+		\caption{log\_Size-log\_Average\_degree.tikz, with size > 0, total number of networks 1203}
+	\end{figure}
+
+	\begin{figure}[!htb]
+		\centering
+		\input{Size-Relative_size_of_LCC.tikz}
+		\caption{Size-Relative\_size\_of\_LCC.tikz, all unipartite, undirected with size > 0, total number of networks 74}
+	\end{figure}
+
+	\begin{figure}[!htb]
+		\centering
+		\input{log_Size-Relative_size_of_LCC.tikz}
+		\caption{log\_Size-Relative\_size\_of\_LCC.tikz, all unipartite, undirected with size > 0, total number of networks 74}
+	\end{figure}
+
+	\begin{figure}[!htb]
+		\centering
+		\input{Size-Relative_size_of_LSCC.tikz}
+		\caption{Size-Relative\_size\_of\_LSCC.tikz, all directed with size > 0, total number of networks 302}
+	\end{figure}
+
+
+	\begin{figure}[!htb]
+		\centering
+		\input{log_Size-Relative_size_of_LSCC.tikz}
+		\caption{log\_Size-Relative\_size\_of\_LSCC.tikz,  all directed with size > 0, total number of networks 302}
+	\end{figure}
+
+	\begin{figure}[!htb]
+		\centering
+		\input{log_Size-50-Percentile_effective_diameter.tikz}
+		\caption{log\_Size-50-Percentile\_effective\_diameter.tikz, size > 10000, total number of networks 727}
 	\end{figure}
 
 	\begin{figure}[!htb]
 		\centering
 		\input{log_Size-90-Percentile_effective_diameter.tikz}
-		\caption{log\_Size-90-Percentile\_effective\_diameter.tikz}
+		\caption{log\_Size-90-Percentile\_effective\_diameter.tikz, with size > 10000, total number of networks 727}
 	\end{figure}
 	
-	\begin{figure}[!htb]
-		\centering
-		\input{log_Size-50-Percentile_effective_diameter.tikz}
-		\caption{log\_Size-50-Percentile\_effective\_diameter.tikz}
-	\end{figure}
 \end{document}
