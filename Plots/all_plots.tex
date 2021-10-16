@@ -47,7 +47,7 @@
 	{\end{list}}
 
 
-\title{Konect Aggregate Statistics}
+\title{Konect Aggregate Statistics Plots}
 \author{Lourens Touwen}
 
 
@@ -68,14 +68,8 @@
 	\definecolor{mycolor4}{rgb}{0.00000,0.10000,0.10000}
 	\definecolor{mycolor5}{rgb}{0.00000,1,1}
 	
-	All networks in KONECT, except Infrastructure Networks. If filtered on size, then N>10000.
+	Plots are calculated calculated on all networks in KONECT as of summer 2021. except Infrastructure Networks. If filtered on size, then N>10000. The dataset, aswell as the code made to generate the plots can be found on \textsc{https://github.com/LourensT/Konect-Aggregate-Statistics/}.
 	
-	\begin{figure}[!htb]
-		\centering
-		\input{Size-Diameter.tikz}
-		\caption{Size-Diameter.tikz, size > 10000, total number of networks 727}
-	\end{figure}
-
 	\begin{figure}[!htb]
 		\centering
 		\input{log_Size-Diameter.tikz}
@@ -85,13 +79,7 @@
 	\begin{figure}[!htb]
 		\centering
 		\input{log_Size-Diameter-CROPPED.tikz}
-		\caption{log\_Size-Diameter-CROPPED.tikz, size > 10000, diamter < 75 total number of networks 721, y-axis truncated at 75.}
-	\end{figure}
-
-	\begin{figure}[!htb]
-		\centering
-		\input{Size-Clustering_coefficient.tikz}
-		\caption{Size-Clustering\_coefficient.tikz, size > 10000, total number of networks 727}
+		\caption{log\_Size-Diameter-CROPPED.tikz, size > 10000, diamter < 40 total number of networks 721, y-axis truncated at 40.}
 	\end{figure}
 
 	\begin{figure}[!htb]
@@ -103,13 +91,19 @@
 	\begin{figure}[!htb]
 		\centering
 		\input{log_Size-log_Maximum_indegree.tikz}
-		\caption{log\_Size-log\_Maximum\_indegree.tikz, with size > 10000, total number of networks 727}
+		\caption{log\_Size-log\_Maximum\_indegree.tikz, with size > 10000, total number of networks 229}
+	\end{figure}	
+
+	\begin{figure}[!htb]
+		\centering
+		\input{log_Size-log_Maximum_outdegree.tikz}
+		\caption{log\_Size-log\_Maximum\_outdegree.tikz, with size > 10000, total number of networks 229}
 	\end{figure}	
 
 	\begin{figure}[!htb]
 		\centering
 		\input{log_Size-log_Maximum_degree.tikz}
-		\caption{log\_Size-log\_Maximum\_degree.tikz, with size > 10000, total number of networks 727}
+		\caption{log\_Size-log\_Maximum\_degree.tikz, with size > 10000, total number of networks 727. Linear regression gives $\log{M_n} = 0.742 + 0.519\log{n}$. With $\hat{\beta} = \frac{1}{\hat{\tau} -1} = 0.519$ implies that $\hat{\tau} \approx 2.927$, with $M_{n} \sim M \frac{1}{n^{\tau -1}}$}.
 	\end{figure}
 	
 	\begin{figure}[!htb]
@@ -120,22 +114,9 @@
 
 	\begin{figure}[!htb]
 		\centering
-		\input{Size-Relative_size_of_LCC.tikz}
-		\caption{Size-Relative\_size\_of\_LCC.tikz, all unipartite, undirected with size > 0, total number of networks 74}
-	\end{figure}
-
-	\begin{figure}[!htb]
-		\centering
 		\input{log_Size-Relative_size_of_LCC.tikz}
 		\caption{log\_Size-Relative\_size\_of\_LCC.tikz, all unipartite, undirected with size > 0, total number of networks 74}
 	\end{figure}
-
-	\begin{figure}[!htb]
-		\centering
-		\input{Size-Relative_size_of_LSCC.tikz}
-		\caption{Size-Relative\_size\_of\_LSCC.tikz, all directed with size > 0, total number of networks 302}
-	\end{figure}
-
 
 	\begin{figure}[!htb]
 		\centering
@@ -147,12 +128,6 @@
 		\centering
 		\input{log_Size-50-Percentile_effective_diameter.tikz}
 		\caption{log\_Size-50-Percentile\_effective\_diameter.tikz, size > 10000, total number of networks 727}
-	\end{figure}
-
-	\begin{figure}[!htb]
-		\centering
-		\input{log_Size-90-Percentile_effective_diameter.tikz}
-		\caption{log\_Size-90-Percentile\_effective\_diameter.tikz, with size > 10000, total number of networks 727}
 	\end{figure}
 	
 \end{document}

@@ -1,4 +1,4 @@
-%Plot of Konect networks without Infrastructure networks and with size > 10000, total number of networks 727
+%Plot of Konect networks without Infrastructure networks and with size > 10000, total number of networks 726
 \tikzstyle{every node}=[font=\normalsize]
 
 \begin{tikzpicture}
@@ -23,7 +23,7 @@ ymode=log,
 xlabel={Size}, 
 ylabel={Maximum degree}]
 
-\addplot [color=mycolor2, line width = 2pt, mark size=1.5pt, mark=*, only marks, mark options={solid, mycolor2}]
+\addplot [color=mycolor2, line width = 2pt, mark size=1.5pt, mark=*, only marks, mark options={solid, mycolor2}, on layer=background]
 table[row sep=crcr]{
 14274	99\\ 
 456626	51388\\ 
@@ -753,6 +753,12 @@ table[row sep=crcr]{
 52579682	3691240\\ 
 };
 \addlegendentry{Maximum degree}
+
+\addplot [color=mycolor3, line width = 2pt, on layer=foreground]
+table[row sep=crcr]{
+10000	5191\\
+100000000	51900065\\
+}; 
 
 	\end{axis}
 \end{tikzpicture}

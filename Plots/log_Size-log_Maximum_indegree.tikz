@@ -1,4 +1,4 @@
-%Plot of Konect networks without Infrastructure networks and with size > 10000, total number of networks 727
+%Plot of Konect networks without Infrastructure networks and with size > 10000, total number of networks 229
 \tikzstyle{every node}=[font=\normalsize]
 
 \begin{tikzpicture}
@@ -21,7 +21,7 @@ ymax=3635996.0,
 xmode=log, 
 ymode=log, 
 xlabel={Size}, 
-ylabel={Maximum indegree}]
+ylabel={Maximum in-degree}]
 
 \addplot [color=mycolor2, line width = 2pt, mark size=1.5pt, mark=*, only marks, mark options={solid, mycolor2}]
 table[row sep=crcr]{
@@ -255,7 +255,7 @@ table[row sep=crcr]{
 41652230	2997469.0\\ 
 52579682	3503656.0\\ 
 };
-\addlegendentry{Maximum indegree}
+\addlegendentry{Maximum in-degree}
 
 	\end{axis}
 \end{tikzpicture}

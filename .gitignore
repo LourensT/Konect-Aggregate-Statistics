@@ -3,3 +3,7 @@ Plots/texput.log
 Plots/main.aux
 Plots/main.log
 Plots/main.synctex.gz
+Plots/old/
+eda.ipynb
+slope_of_maxdegrees.py
+.ipynb_checkpoints/eda-checkpoint.ipynb

@@ -17,7 +17,7 @@ legend style={legend pos=north west, legend cell align=left, align=left, draw=wh
 xmin=10063, 
 xmax=105153952, 
 ymin=0, 
-ymax=75, 
+ymax=40, 
 xmode=log, 
 xlabel={Size}, 
 ylabel={Diameter}]

@@ -35,7 +35,7 @@ def make_plot(df, index, metric, xlog, ylog):
     print("dataframe shape after filter", df.shape)
 
     df_dict = df.set_index(index)[metric].dropna().to_dict()
-    plot = GenerateTikz(BASE_FP + fp, documentation="Plot of Konect networks without Infrastructure networks and with size > {}, total number of networks {}".format(size_min, df.shape[0]))
+    plot = GenerateTikz(BASE_FP + fp, documentation="Plot of Konect networks without Infrastructure networks and with size > {}, total number of networks {}".format(size_min, len(df_dict)))
     plot.setConfiguration(min(df_dict.keys()), max(df_dict.keys()), min(df_dict.values()), max(df_dict.values()), xlog=xlog, ylog=ylog, xlabel=index, ylabel=metric)
     plot.addSeries(df_dict, metric)
 
@@ -49,6 +49,8 @@ size_min = N
 make_plot(df, "Size", "Maximum degree", True, True)
 # log netwerk size - log maximum indegree
 make_plot(df, "Size", "Maximum indegree", True, True)
+# log netwerk size - log maximum outdegree
+make_plot(df, "Size", "Maximum outdegree", True, True)
 
 
 size_min = 0
@@ -71,22 +73,18 @@ size_min = 0
 # unipartite undirected
 # size - proportion van largest component (Relative size of LCC)
 df["Relative size of LCC"] = df["Size of LCC"] / df["Size"]
-make_plot(df[df['Attributes'].apply(lambda x : ("Unipartite" in eval(x)) and ("undirected" in eval(x)))], "Size", "Relative size of LCC", False, False)
 make_plot(df[df['Attributes'].apply(lambda x : ("Unipartite" in eval(x)) and ("undirected" in eval(x)))], "Size", "Relative size of LCC", True, False)
 
 # directed
 # size - proportion van giant  component (Relative size of LSCC)
-make_plot(df[df['Attributes'].apply(lambda x : ("directed" in eval(x)))], "Size", "Relative size of LSCC", False, False)
 make_plot(df[df['Attributes'].apply(lambda x : ("directed" in eval(x)))], "Size", "Relative size of LSCC", True, False)
 
 # size N>1000(?)
 size_min = N
-# size 		- diameter	
-make_plot(df, "Size", "Diameter", False, False)
 # log(size)	- diameter 	(verwacht lineare trend in wolk omhoog)
 make_plot(df, "Size", "Diameter", True, False)
 
 # size N>1000(?)
 size_min = N
-# size 		- clustering coefficient	(real world meer clustering dan random graphs)
-make_plot(df, "Size", "Clustering coefficient", False, False)
+# size - clustering coefficient	(real world meer clustering dan random graphs)
+make_plot(df, "Size", "Clustering coefficient", True, False)

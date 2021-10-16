@@ -1,4 +1,4 @@
-%Plot of Konect networks without Infrastructure networks and with size > 10000, total number of networks 727
+%Plot of Konect networks without Infrastructure networks and with size > 10000, total number of networks 725
 \tikzstyle{every node}=[font=\normalsize]
 
 \begin{tikzpicture}
